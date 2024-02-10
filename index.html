@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Server Connection</title>
+<style>
+  body {
+    background-image: url(matrix.gif);
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    margin-top: 250px;
+  }
+  .neon-text {
+    color: #fff;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px #0ff,
+      0 0 80px #0ff,
+      0 0 90px #0ff,
+      0 0 100px #0ff,
+      0 0 150px #0ff;
+      font-size: 25px;
+  }
+</style>
+</head>
+<body>
+<h1 class="neon-text">Confirming identity,</h1>
+<p class="neon-text">AUTHENTICATING...</p>
+<hr>
+<p style="font-size: 10px;">Loading <span id="progress">0</span>%</p>
+
+<audio id="alertSound" src="calm.mp3" preload="auto"></audio>
+
+<script>
+  const texts = [
+    "Verification Complete, Welcome Tangi!❤️",
+    "Can I share something important with you? Please, take a moment to listen.",
+    "Hello my Dearest Bless,",
+    "Ever since I met you, my world has changed. Your smile brightens my darkest days.",
+    "Your presence in my life makes every moment more meaningful. I'm grateful for you.",
+    "Did you know? Thoughts of you occupy my mind constantly. You're the light in my life.",
+    "Out of billions of people in the world, it's incredible that we found each other. You're my soulmate.",
+    "I may not be the most eloquent, but my feelings for you are genuine. I promise to cherish and support you always.",
+    "In a world full of distractions, my focus is solely on you. You're the one I've been searching for.",
+    "Will you be my partner in this journey called life? I want to walk hand in hand with you forever.",
+    "You've become an integral part of my life, and I can't imagine it without you. i care about you more than words can express.",
+    "Loading Complete!"
+  ];
+
+  let i = 0;
+  const progressBar = document.getElementById("progress");
+  const intervalId = setInterval(() => {
+    if (i >= 100) {
+      clearInterval(intervalId);
+      const button = document.createElement("button");
+      button.textContent = "Enter Login Page";
+      button.onclick = function() {
+        // Redirect to the login page or perform any action you want
+        window.location.href = "next.html";
+      };
+      document.body.appendChild(button);
+    } else {
+      progressBar.textContent = i++;
+    }
+    if (i % 10 === 0) {
+      const index = i / 10 - 1;
+      const text = texts[index];
+      if (text !== "Verification Complete, Welcome Tangi!❤️") {
+        setTimeout(() => {
+          alertWithSound(text);
+        }, 1000); // Delay alert by 1 second
+      } else {
+        const paragraph = document.createElement("p");
+        paragraph.className = "neon-text";
+        document.body.appendChild(paragraph);
+        animateText(text, paragraph);
+      }
+    }
+  }, 1000);
+
+  function animateText(text, element) {
+    let j = 0;
+    const textInterval = setInterval(() => {
+      if (j >= text.length) {
+        clearInterval(textInterval);
+      } else {
+        element.textContent += text[j];
+        j++;
+      }
+    }, 100);
+  }
+
+  function alertWithSound(text) {
+    alert(text);
+    const alertSound = document.getElementById("alertSound");
+    alertSound.play();
+  }
+</script>
+<p class="neon-text">You are Connecting To NathanAI Server  :: @MaliciousNathan.corp</p>
+<p>------------ FORWARNED IS FOREARMED --------------</p>
+
+</body>
+</html>
